@@ -28,6 +28,11 @@ VITE_API_URL=https://localhost
 https://github.com/kuc-arc-f/workers21/tree/main/react_example
 
 ***
+### Blog
+
+https://zenn.dev/link/comments/4c6450f10f4c86
+
+***
 # License
 
 * MIT
