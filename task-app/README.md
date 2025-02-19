@@ -30,6 +30,11 @@ VITE_API_KEY="123"
 ```
 
 ***
+### Blog
+
+* https://zenn.dev/link/comments/9e4ae134f1f82b
+
+***
 # License
 
 * MIT
