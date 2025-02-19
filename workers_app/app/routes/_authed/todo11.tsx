@@ -1,6 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router'
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import HttpCommon from '~/utils/HttpCommon';
 import { z } from 'zod';
 
 // Zod バリデーションスキーマ
@@ -58,9 +59,10 @@ function RouteComponent() {
       todoSchema.parse(newTodo);
       setErrors({});
       console.log(newTodo)
-  
-      const response = await axios.post(API_URL + '/api/todo14', newTodo);
-      setTodos([...todos, response.data]);
+      const response = await HttpCommon.post(newTodo,  '/api/todo14');
+      console.log(response)
+      location.reload();
+      //setTodos([...todos, response.data]);
       setIsAddModalOpen(false);
     } catch (error) {
       if (error instanceof z.ZodError) {
@@ -81,11 +83,12 @@ function RouteComponent() {
       // バリデーション
       todoSchema.parse(updatedTodo);
       setErrors({});
-  
-      const response = await axios.put(`${API_URL}/api/todo14/${updatedTodo.id}`, updatedTodo);
-      setTodos(todos.map(todo => todo.id === updatedTodo.id ? response.data : todo));
+      const response = await HttpCommon.post(updatedTodo,  '/api/todo14update');
+      console.log(response)
+      //setTodos(todos.map(todo => todo.id === updatedTodo.id ? response.data : todo));
       setIsEditModalOpen(false);
       setEditingTodo(null);
+      location.reload();
     } catch (error) {
       if (error instanceof z.ZodError) {
         const newErrors = {};
@@ -102,8 +105,11 @@ function RouteComponent() {
   // TODOの削除
   const handleDeleteTodo = async (id) => {
     try {
-      await axios.delete(`${API_URL}/api/todo14/${id}`);
-      setTodos(todos.filter(todo => todo.id !== id));
+      const item = {id: id}
+      const response = await HttpCommon.post(item,  '/api/todo14delete');
+      console.log(response)
+      location.reload();
+      //setTodos(todos.filter(todo => todo.id !== id));
     } catch (error) {
       console.error('Error deleting todo:', error);
     }
@@ -177,8 +183,8 @@ function RouteComponent() {
 
       {/* 追加ダイアログ */}
       {isAddModalOpen && (
-        <div id="dialog" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-          <div class="bg-white rounded-lg shadow-lg p-6 max-w-md w-full">
+        <div id="dialog" className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+          <div className="bg-white rounded-lg shadow-lg p-6 max-w-md w-full">
             <h2 className="text-xl font-bold mb-4">TODOを追加</h2>
             <AddTodoForm onAddTodo={handleAddTodo} onClose={closeAddModal} errors={errors} />
           </div>
@@ -187,7 +193,7 @@ function RouteComponent() {
 
       {/* 編集ダイアログ */}
       {isEditModalOpen && editingTodo && (
-        <div id="dialog" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+        <div id="dialog" className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
           <div className="bg-white rounded-lg shadow-lg p-6 max-w-md w-full">
             <h2 className="text-xl font-bold mb-4">TODOを編集</h2>
             <EditTodoForm todo={editingTodo} onUpdateTodo={handleUpdateTodo} onClose={closeEditModal} errors={errors} />
