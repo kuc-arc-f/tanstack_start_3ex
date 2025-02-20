@@ -120,17 +120,13 @@ function RouteComponent() {
         console.error(error);
     }
   }
-  //const setStateArray = async function() {
-  //  itemsNone = items.filter(item => (item.status === String(TaskCrud.statusType.none)) );
-  //  itemsWorking = items.filter(item => (item.status === String(TaskCrud.statusType.working)) );
-  //  itemsComplete = items.filter(item => (item.status === String(TaskCrud.statusType.complete)) );
-  //}
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="bg-white p-8 rounded shadow-md w-full max-w-sm">
         <Link to={`/TaskProjectShow`} search={{ id: task.projectId}}
-          >[ Back ]
+          className="btn-outline-blue"
+          >Back
         </Link>
         <hr className="my-2" />
         <h1 className="text-3xl -font-bold">TaskEdit</h1>

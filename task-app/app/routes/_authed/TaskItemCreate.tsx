@@ -45,9 +45,6 @@ function RouteComponent() {
   useEffect(() => {
     const fetchTodos = async () => {
       try {
-        //const tmpId = searchParams.get('id'); // ?xx=の値を取得
-        //setId(tmpId);
-        //console.log("tmpId=", tmpId);
         const dt = moment().format('YYYY-MM-DD');
         setStartDate(dt);
         setComplete(dt);  
@@ -94,7 +91,8 @@ function RouteComponent() {
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="bg-white p-8 rounded shadow-md w-full max-w-sm">
         <Link to={`/TaskProjectShow`} search={{ id: id}}
-          >[ Back ]
+        className="btn-outline-blue"
+          >Back
         </Link>
         <hr className="my-2" />
         <h1 className="text-3xl -font-bold">TaskCreate</h1>
@@ -164,7 +162,7 @@ function RouteComponent() {
         <button  
         onClick={() => saveProc()}
         className="btn btn-primary my-2"
-        >[ Save ]</button>
+        >Save</button>
   
       </div>
   

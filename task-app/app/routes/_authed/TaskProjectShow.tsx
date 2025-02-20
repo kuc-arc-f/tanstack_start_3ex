@@ -80,7 +80,8 @@ function RouteComponent() {
           <div className="col-md-6 text-end">
             <Link to={`/TaskItemCreate`} 
               search={{ id: id }}
-              >[ Create ]
+              className="btn"
+              >Create
             </Link>
 
           </div>
@@ -94,7 +95,8 @@ function RouteComponent() {
             <div className="col-md-6 text-end p-2">
               <Link to={`/TaskProjectExport`} 
                 search={{ id: id }}
-                >[ Export ]
+                className="btn"
+                >Export
               </Link>
             </div>
           </div>

@@ -85,7 +85,8 @@ function RouteComponent() {
                   search={{
                     id: item.id,
                   }}
-                  >[ Show ]
+                  className="btn"
+                  >Show
                 </Link>
 
               </div>            

@@ -65,8 +65,6 @@ function RouteComponent() {
 
   const exportGantt = async function () {
     try{
-      //const filePath = 'static/Gantt_temp.xlsx';
-      //const data = await window.myGetTemplateFile.getTemplateFile(filePath);
       await ExportGantt.out(items)
     } catch (e) {
         console.error(e);
@@ -98,7 +96,7 @@ function RouteComponent() {
         */}
         <div className="text-center">
           <button className="my-2 btn" onClick={() => exportGantt()}
-          >[ Gantt ]</button>
+          >Gantt</button>
         </div>    
         <hr className="my-1" />
   
