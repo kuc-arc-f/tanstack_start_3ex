@@ -59,10 +59,6 @@ export function Auth({
         <hr className="my-2" />
         {actionText === "Login" ? (
         <>
-          <Link
-          to="/signup"
-          className="btn"
-          >[ Signup ]</Link>
         </>
         ) : (
           <Link
@@ -75,3 +71,9 @@ export function Auth({
     </div>
   )
 }
+/*
+<Link
+to="/signup"
+className="btn"
+>[ Signup ]</Link>
+*/

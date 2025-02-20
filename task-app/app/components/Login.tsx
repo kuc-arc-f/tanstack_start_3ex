@@ -43,26 +43,33 @@ export function Login() {
       onSubmit={async(e) => {
         const formData = new FormData(e.target as HTMLFormElement)
         const data = {
-          api_path: "/api/users/login",
           email: formData.get('email') as string,
           password: formData.get('password') as string,
         };
         console.log(data);
+        const response = await fetch("/api/user/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data),
+        });
+        console.log(response);
+        if (!response.ok) {
+          return;
+        }
+        const json = await response.json()
+        console.log(json);
+        if(json.ret && json.ret !== 200){
+          alert("error, Login"); 
+          return;
+        }
+        /*
         const result = await signup.create(data);
         if(!result){
            alert("error, Login"); 
            return;
         }
-        /*
-        const userData = {
-          api_path: "/api/users/get_user_id",
-          email: formData.get('email') as string,
-        };
-        const resUser = await signup.create(userData);
-        if(!resUser){
-          return;
-       }
         */
+
         loginMutation.mutate({
           data: {
             email: formData.get('email') as string,

@@ -38,6 +38,8 @@ https://github.com/kuc-arc-f/d1-project8git
 ```
 VITE_API_URL=https://localhost
 VITE_API_KEY="123"
+VITE_USER_USERNAME="u1@example.com"
+VITE_USER_PASSWORD="1234"
 ```
 
 ***
